@@ -8,7 +8,7 @@ export const getUsersList = (req, res) => {
             data: response
         })
     } catch (err) {
-        res.status(402).json({
+        res.status(500).json({
             message: "Data not fetched.Error occured.",
             error: err.message
         })
