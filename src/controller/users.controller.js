@@ -15,6 +15,18 @@ export const getUsersList = (req, res) => {
     }
 }
 
-export const addUsersInList = () => {
-
+export const addUsersInList = async () => {
+    try {
+        const { name, email, password } = req.body
+        const response = await addUserInList({ name, email, password })
+        res.status(201).json({
+            message: "User created successfully",
+            data: response
+        })
+    } catch (err) {
+        res.status(401).json({
+            message: "Error in adding user",
+            error: err
+        })
+    }
 }
