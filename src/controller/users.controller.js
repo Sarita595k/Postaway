@@ -14,3 +14,7 @@ export const getUsersList = (req, res) => {
         })
     }
 }
+
+export const addUsersInList = () => {
+
+}
