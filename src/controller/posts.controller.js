@@ -1,4 +1,4 @@
-import { getPost, createPost } from "../model/posts.model.js";
+import { getPost, createPost, checkPostExist, updatePost } from "../model/posts.model.js";
 
 export const retriveAllPosts = (req, res) => {
     try {
@@ -39,5 +39,30 @@ export const createPostByUser = async (req, res) => {
             message: "Error in creating post",
             error: err.message
         })
+    }
+}
+
+
+export const updatePostByUser = async (req, res) => {
+    try {
+        const { id } = req.params
+        const checkIdExist = checkPostExist({ id })
+        if (!checkIdExist) {
+            return res.status(404).json({
+                message: "no post exist with the given id"
+            })
+        }
+        const { caption } = req.body
+        const file = req.file
+        const imageUrl = file ? `/uploads/${file.filename}` : checkIdExist.imageUrl
+        // const username = req.user.name
+        // const userId = req.user.id
+        const updatedData = await updatePost({ id, imageUrl, caption })
+        return res.status(201).json({
+            message: "post updated",
+            data: updatedData
+        })
+    } catch (err) {
+        return res.send(" post exist with the given id")
     }
 }
