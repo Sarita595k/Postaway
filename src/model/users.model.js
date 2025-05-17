@@ -10,3 +10,7 @@ export const addUserInList = (data) => {
     users.push(newUser)
     return newUser
 }
+
+export const checkUserExist = async ({ email }) => {
+    return users.find(user => user.email === email) || null
+}
