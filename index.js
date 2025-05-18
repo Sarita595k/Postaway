@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 import Router from "./src/routes/users.routes.js"
+import router from "./src/routes/comments.routes.js"
 import multer from 'multer'
 
 const app = express()
@@ -16,6 +17,8 @@ app.use('/api', Router)
 // posts router 
 app.use('/api/posts', Router)
 
+// comments router 
+app.use('/api/comments', router)
 // error handling middleware for multer 
 app.use((err, req, res, next) => {
     if (err instanceof multer.MulterError || err.message.includes("invalid file type")) {

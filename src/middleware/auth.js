@@ -14,6 +14,9 @@ export const auth = (req, res, next) => {
         req.user = decoded
         next()
     } catch (err) {
-
+        return res.status(400).json({
+            message: "Authentication failed",
+            error: err.message
+        })
     }
 }
