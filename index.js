@@ -2,8 +2,10 @@ import express from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 import Router from "./src/routes/users.routes.js"
-import router from "./src/routes/comments.routes.js"
+import commentsRouter from "./src/routes/comments.routes.js"
+import likesRouter from './src/routes/likes.routes.js'
 import multer from 'multer'
+import logger from './src/middleware/logger.js'
 
 const app = express()
 
@@ -11,6 +13,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('/uploads', express.static('uploads'))
 
+// using logger middleware for each request
+app.use(logger)
 // user router 
 app.use('/api', Router)
 
@@ -18,7 +22,10 @@ app.use('/api', Router)
 app.use('/api/posts', Router)
 
 // comments router 
-app.use('/api/comments', router)
+app.use('/api/comments', commentsRouter)
+
+// likes router 
+app.use('/api/likes', likesRouter)
 // error handling middleware for multer 
 app.use((err, req, res, next) => {
     if (err instanceof multer.MulterError || err.message.includes("invalid file type")) {

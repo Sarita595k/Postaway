@@ -1,4 +1,5 @@
 import { getAllComments, createComment, commentExist, updateComment, deleteComment } from "../model/comment.model.js";
+import { checkPostExist } from "../model/posts.model.js";
 
 export const getAllCommentByPost = (req, res) => {
     try {
@@ -23,6 +24,12 @@ export const createCommentsByPost = async (req, res) => {
         const userId = req.user.userId
         const { id: postId } = req.params
         const { content } = req.body
+        const checkPostExist = await checkPostExist({ id })
+        if (!checkPostExist) {
+            return res.status(404).json({
+                message: "no post exist with the given id check with a valid id."
+            })
+        }
         const comment = await createComment({ content, userId, postId })
         return res.status(200).json({
             message: "comment added successfully",

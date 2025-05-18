@@ -1,0 +1,39 @@
+PostAway Social Media Management API Documentation
+🧾 Overview
+The Post Management API allows you to manage a list of posts and users. You can create, read, update, and delete posts. This is a RESTful API that uses JSON for data exchange.
+
+#########################################
+
+The api structure for thi postaway api is :
+*****************************************
+User Routes:
+/api
+post:- /api/signup: register a new user
+post:- /api/signin: login an existing user
+get:- /api : to get list of all users
+
+*****************************************
+Post Routes:
+/api/posts
+get:- /api/posts/all: retrieve all posts
+get:- /api/posts/:id : retrieve a specific post by id
+post:- /api/posts/create:  create a new post (with image upload functionality)
+put:- /api/posts/:id: update a specific post by id(image upload functionality include)
+delete:- /api/posts/:id: delete a specific post by id
+
+*****************************************
+/api/comments
+get:- /api/comments/:id: retrieve all comments for a specific post
+post:- /api/comments/:id : add a new comment to a specific post
+put:- /api/comments/:id: update a specific comment by id
+delete:- /api/comment/:id: delete a specific comment by id
+
+*****************************************
+/api/likes
+get:- /api/likes/:postId: to retrieve likes of a specific post
+post:- /api/likes/:postId: to add a like on a specific post
+delete:- /api/likes/:postId: to delete a like from a specific post
+
+***************************************** 
+
+the api contains jwt authentication 
