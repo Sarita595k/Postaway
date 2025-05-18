@@ -21,5 +21,15 @@ export const updateComment = (data) => {
     if (index == -1) {
         return null
     }
+    comments[index] = { ...comments[index], ...data }
+    return comments[index]
+}
 
+export const deleteComment = (data) => {
+    const index = comments.findIndex(comment => comment.id == data.id)
+    if (index == -1) {
+        return null
+    }
+    comments.splice(index, 1)
+    return true
 }
