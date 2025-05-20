@@ -54,3 +54,14 @@ export const deletePost = (data) => {
     posts.splice(index, 1)
     return true
 }
+
+// for filtering post by caption
+
+// saving post as draft
+// archieving post
+
+// sorting post by date
+
+// bookmarking posts
+
+// pagination for posts

@@ -33,3 +33,5 @@ export const deleteComment = (data) => {
     comments.splice(index, 1)
     return true
 }
+
+// pagination for comments
