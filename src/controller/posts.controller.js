@@ -81,3 +81,14 @@ export const deletePostById = catchAsync(async (req, res) => {
         message: "Post deleted Successfully"
     })
 })
+
+// for filtering post by caption
+
+// saving post as draft
+// archieving post
+
+// sorting post by date
+
+// bookmarking posts
+
+// pagination for posts
