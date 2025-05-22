@@ -8,12 +8,16 @@ import likesRouter from './src/routes/likes.routes.js'
 import multer from 'multer'
 import logger from './src/middleware/logger.js'
 import { errorMiddleware } from './src/middleware/errorHandling.js'
+import swaggerui from "swagger-ui-express"
+import swaggerJson from './Documentation/swagger.json' assert{type: "json"}
+
 
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('/uploads', express.static('uploads'))
+app.use('/api/docs', swaggerui.serve, swaggerui.setup(swaggerJson))
 
 // using logger middleware for each request
 app.use(logger)

@@ -1,0 +1,8 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Postaway:Social Media App",
+        "description": "A simple app where user can register or login and can post their thoughts."
+    }
+}
