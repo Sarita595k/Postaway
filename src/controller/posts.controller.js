@@ -37,6 +37,7 @@ export const findPostByUser = catchAsync(async (req, res) => {
     })
 })
 
+// contoller for update posts by user id
 export const updatePostByUser = catchAsync(async (req, res, next) => {
     const { id } = req.params
     // const username = req.user.name
