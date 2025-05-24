@@ -2,6 +2,7 @@ import { getPost, createPost, checkPostExist, updatePost, deletePost, posts, get
 import { catchAsync } from "../utils/catchAsync.js"
 
 
+// retrive All Posts 
 export const retriveAllPosts = catchAsync(async (req, res) => {
     const allPosts = await getPost()
     return res.status(200).json({
@@ -10,6 +11,7 @@ export const retriveAllPosts = catchAsync(async (req, res) => {
     })
 })
 
+// create post by users
 export const createPostByUser = catchAsync(async (req, res, next) => {
     const { caption } = req.body
     const file = req.file
@@ -28,6 +30,7 @@ export const createPostByUser = catchAsync(async (req, res, next) => {
     })
 })
 
+// find post by user 
 export const findPostByUser = catchAsync(async (req, res) => {
     const { id } = req.params
     const response = await getPostByUserId({ id })
@@ -37,7 +40,7 @@ export const findPostByUser = catchAsync(async (req, res) => {
     })
 })
 
-// contoller for update posts by user id
+// controller for update posts by user id
 export const updatePostByUser = catchAsync(async (req, res, next) => {
     const { id } = req.params
     // const username = req.user.name
@@ -63,6 +66,7 @@ export const updatePostByUser = catchAsync(async (req, res, next) => {
     })
 })
 
+// delete posts by id 
 export const deletePostById = catchAsync(async (req, res) => {
     const id = req.params.id
     const post = posts.find(post => post.id == id)
