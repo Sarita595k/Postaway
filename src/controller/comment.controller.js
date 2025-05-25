@@ -2,6 +2,7 @@ import { getAllComments, createComment, commentExist, updateComment, deleteComme
 import { checkPostExist } from "../model/posts.model.js";
 import { catchAsync } from "../utils/catchAsync.js"
 
+// to get all the comment by the post 
 export const getAllCommentByPost = catchAsync(async (req, res) => {
     const { id } = req.params
     console.log(id)
@@ -12,6 +13,7 @@ export const getAllCommentByPost = catchAsync(async (req, res) => {
     })
 })
 
+// to create comments by post 
 export const createCommentsByPost = catchAsync(async (req, res, next) => {
     const { id } = req.params
     const userId = req.user.userId
@@ -28,9 +30,9 @@ export const createCommentsByPost = catchAsync(async (req, res, next) => {
         message: "comment added successfully",
         data: comment
     })
-}
+})
 
-)
+// to update comment by id 
 export const updateCommentById = catchAsync(async (req, res, next) => {
 
     const { id } = req.params

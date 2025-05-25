@@ -2,6 +2,7 @@ import { addLike, deleteLike, getAllLikes } from "../model/like.model.js"
 import { catchAsync } from "../utils/catchAsync.js"
 
 
+// to get all the likes on a post 
 export const getAllLikesOnPost = catchAsync(async (req, res) => {
     const { id } = req.params
     const response = await getAllLikes({ id })
@@ -11,6 +12,7 @@ export const getAllLikesOnPost = catchAsync(async (req, res) => {
     })
 })
 
+// to add a like on the post 
 export const addLikeOnAPost = catchAsync(async (req, res, next) => {
     const { id: postId } = req.params
     const { like } = req.body
@@ -26,6 +28,8 @@ export const addLikeOnAPost = catchAsync(async (req, res, next) => {
         data: liked
     })
 })
+
+// to delete like from a post 
 export const deletePostLike = catchAsync(async (req, res) => {
     const { id } = req.params
     const response = await deleteLike({ id })
