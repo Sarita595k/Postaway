@@ -55,3 +55,5 @@ export const loginUser = catchAsync(async (req, res, next) => {
         token: token
     })
 })
+
+// end of the code
