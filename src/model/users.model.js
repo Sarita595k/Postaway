@@ -14,3 +14,5 @@ export const addUserInList = (data) => {
 export const checkUserExist = async ({ email }) => {
     return users.find(user => user.email === email) || null
 }
+
+// end of code
